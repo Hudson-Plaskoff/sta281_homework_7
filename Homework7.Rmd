@@ -1,0 +1,52 @@
+---
+title: "Homework7"
+author: "HudsonPlaskoff"
+date: "2026-03-06"
+output:
+  html_document:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+library(ggthemes)
+library(knitr)
+```
+
+## Filter Diamonds Dataset
+
+```{r}
+
+```
+
+## Visualization of Price and Carat
+
+```{r}
+
+```
+
+## Visualization of Price, Carat, and Color
+
+```{r}
+
+```
+
+## Visualization of Price, Carat, Color, and Clarity
+
+```{r}
+
+```
+
+## Faceted Visualization of Price, Carat, Color, and Clarity
+
+```{r}
+
+```
+
+## Price-Carat Ratios of Color-Clarity Combinations
+
+```{r}
+
+```
