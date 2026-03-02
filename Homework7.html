@@ -446,7 +446,75 @@ display: none;
 
 
 <div id="filter-diamonds-dataset" class="section level2">
-<h2>Filter Diamonds Dataset</h2>
+<h2>Filter Diamonds Dataset<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></h2>
+<pre class="r"><code>diamonds_filtered &lt;- diamonds %&gt;%
+  filter(
+    color == &quot;D&quot; | color == &quot;G&quot; | color == &quot;J&quot;,
+    clarity == &quot;I1&quot; | clarity == &quot;VS1&quot; | clarity == &quot;IF&quot;
+    )
+
+diamonds_filtered_combinations &lt;- diamonds_filtered %&gt;%
+  group_by(color,clarity) %&gt;%
+  summarize(n=n())</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;color&#39;. You can override using the
+## `.groups` argument.</code></pre>
+<pre class="r"><code>knitr::kable(diamonds_filtered_combinations)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">color</th>
+<th align="left">clarity</th>
+<th align="right">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">D</td>
+<td align="left">I1</td>
+<td align="right">42</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="left">VS1</td>
+<td align="right">705</td>
+</tr>
+<tr class="odd">
+<td align="left">D</td>
+<td align="left">IF</td>
+<td align="right">73</td>
+</tr>
+<tr class="even">
+<td align="left">G</td>
+<td align="left">I1</td>
+<td align="right">150</td>
+</tr>
+<tr class="odd">
+<td align="left">G</td>
+<td align="left">VS1</td>
+<td align="right">2148</td>
+</tr>
+<tr class="even">
+<td align="left">G</td>
+<td align="left">IF</td>
+<td align="right">681</td>
+</tr>
+<tr class="odd">
+<td align="left">J</td>
+<td align="left">I1</td>
+<td align="right">50</td>
+</tr>
+<tr class="even">
+<td align="left">J</td>
+<td align="left">VS1</td>
+<td align="right">542</td>
+</tr>
+<tr class="odd">
+<td align="left">J</td>
+<td align="left">IF</td>
+<td align="right">51</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="visualization-of-price-and-carat" class="section level2">
 <h2>Visualization of Price and Carat</h2>
@@ -462,6 +530,12 @@ display: none;
 </div>
 <div id="price-carat-ratios-of-color-clarity-combinations" class="section level2">
 <h2>Price-Carat Ratios of Color-Clarity Combinations</h2>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>Question 1 complete<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
 
 

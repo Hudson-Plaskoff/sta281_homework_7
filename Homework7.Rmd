@@ -15,10 +15,20 @@ library(ggthemes)
 library(knitr)
 ```
 
-## Filter Diamonds Dataset
+## Filter Diamonds Dataset^[Question 1 complete]
 
 ```{r}
+diamonds_filtered <- diamonds %>%
+  filter(
+    color == "D" | color == "G" | color == "J",
+    clarity == "I1" | clarity == "VS1" | clarity == "IF"
+    )
 
+diamonds_filtered_combinations <- diamonds_filtered %>%
+  group_by(color,clarity) %>%
+  summarize(n=n())
+
+knitr::kable(diamonds_filtered_combinations)
 ```
 
 ## Visualization of Price and Carat
