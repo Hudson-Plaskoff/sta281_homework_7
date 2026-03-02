@@ -47,7 +47,12 @@ There is a positive relationship between prices and carats for diamonds.^[Questi
 ## Visualization of Price, Carat, and Color
 
 ```{r}
-
+ggplot(
+  diamonds_filtered,
+  aes(x=carat,y=price)
+  ) +
+  geom_point(alpha=0.5,aes(color=color)) +
+  geom_smooth(method="lm",aes(color=color))
 ```
 
 ## Visualization of Price, Carat, Color, and Clarity
