@@ -34,8 +34,15 @@ knitr::kable(diamonds_filtered_combinations)
 ## Visualization of Price and Carat
 
 ```{r}
-
+ggplot(
+  diamonds_filtered,
+  aes(x=carat,y=price)
+  ) +
+  geom_point(alpha=0.5) +
+  geom_smooth(method="lm")
 ```
+
+There is a positive relationship between prices and carats for diamonds.^[Question 2 complete]
 
 ## Visualization of Price, Carat, and Color
 
