@@ -55,11 +55,20 @@ ggplot(
   geom_smooth(method="lm",aes(color=color))
 ```
 
+There is a positive relationship between prices and carats for diamonds, regardless of color. However, this relationship is most positive for color D, slightly less positive for color G, and even less positive for color J.^[Question 3 complete]
+
 ## Visualization of Price, Carat, Color, and Clarity
 
 ```{r}
-
+ggplot(
+  diamonds_filtered,
+  aes(x=carat,y=price)
+  ) +
+  geom_point(alpha=0.5,aes(color=color,shape=clarity)) +
+  geom_smooth(method="lm",aes(color=color))
 ```
+
+This scatterplot is somewhat crowded, making it difficult to make any conclusive analysis of the data.^[Question 4 complete]
 
 ## Faceted Visualization of Price, Carat, Color, and Clarity
 
