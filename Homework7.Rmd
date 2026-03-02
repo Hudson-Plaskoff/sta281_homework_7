@@ -8,7 +8,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 library(tidyverse)
 library(ggplot2)
 library(ggthemes)
@@ -55,7 +55,7 @@ ggplot(
   geom_smooth(method="lm",aes(color=color))
 ```
 
-There is a positive relationship between prices and carats for diamonds, regardless of color. However, this relationship is most positive for color D, slightly less positive for color G, and even less positive for color J.^[Question 3 complete]
+There is a positive relationship between prices and carats for diamonds, regardless of color. However, this relationship is most positive for D (best color), slightly less positive for G (middle-grade color), and even less positive for J (worst color).^[Question 3 complete]
 
 ## Visualization of Price, Carat, Color, and Clarity
 
@@ -73,11 +73,29 @@ This scatterplot is somewhat crowded, making it difficult to make any conclusive
 ## Faceted Visualization of Price, Carat, Color, and Clarity
 
 ```{r}
-
+ggplot(
+  diamonds_filtered,
+  aes(x=carat,y=price)
+  ) +
+  geom_point(alpha=0.5) +
+  geom_smooth(method="lm") +
+  facet_grid(color~clarity)
 ```
+
+The steepest relationship is between IF (best clarity) and D (best color). As the color and clarity decrease respectively, the relationship becomes less positive, with the weakest (although still positive) relationship being between I1 (worst clarity) and J (worst color).^[Question 5 complete]
 
 ## Price-Carat Ratios of Color-Clarity Combinations
 
 ```{r}
+diamonds_filtered <- diamonds_filtered %>%
+  mutate(
+    price_per_carat = price/carat
+  ) %>%
+  group_by(color,clarity) %>%
+  summarize(price_per_carat = mean(price_per_carat)) %>%
+  arrange(desc(price_per_carat))
 
+knitr::kable(diamonds_filtered)
 ```
+
+The data shown on this table agrees with the data shown from the earlier visualizations, especially the faceted scatterplots from Question 5. This reiterates that there is a positive relationship between price and carat. This also reiterates that this relationship is more positive if color and clarity are higher and less positive if color and clarity are lower.^[Question 6 complete]
